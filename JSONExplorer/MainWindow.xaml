@@ -23,13 +23,13 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <!-- 選單 -->
-        <Grid Grid.Row ="1" Background="#CC2E3851" VerticalAlignment="Center">
+        <Grid Grid.Row ="1" Background="#FF2E3851">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="90"/>
             </Grid.ColumnDefinitions>
             <!-- 選單 -->
-            <Menu Grid.Column="0" Background="#CC2E3851" >
+            <Menu Grid.Column="0"  Background="#FF2E3851">
                 <Menu.Resources>
                     <Style TargetType="MenuItem">
                         <Setter Property="Background" Value="{x:Null}"/>
@@ -53,7 +53,7 @@
             <!-- 其他功能 -->
             <WrapPanel Grid.Row="0" Grid.Column="1" 
                        HorizontalAlignment="Right"
-                       VerticalAlignment="Center">
+                       Background="#FF2E3851">
                 <WrapPanel.Resources>
                     <Style TargetType="Button">
                         <Setter Property="Margin" Value="2.5, 0"/>
@@ -75,7 +75,7 @@
                             </Canvas>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="Button.IsMouseOver" Value="True">
-                                    <Setter TargetName="MouseOver" Property="Fill" Value="#FF88D170" />
+                                    <Setter TargetName="MouseOver" Property="Fill" Value="#FF1A1AB9" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
