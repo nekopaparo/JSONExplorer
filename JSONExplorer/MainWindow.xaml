@@ -11,6 +11,7 @@
         Height="400" MinHeight="300"
         ResizeMode="CanResizeWithGrip"
         Background="{x:Null}"
+        Icon="JSONExplorer.ico"
         WindowStyle="None" 
         WindowState="Normal"
         AllowsTransparency="True">
