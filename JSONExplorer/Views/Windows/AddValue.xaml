@@ -1,0 +1,83 @@
+﻿<Window x:Class="JSONExplorer.Views.Windows.AddValue"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JSONExplorer.Views.Windows"
+        mc:Ignorable="d"
+        Title="新增"
+        Width="500" MinWidth="250"
+        Height="400" MinHeight="300"
+        ResizeMode="CanResizeWithGrip"
+        Background="{x:Null}"
+        WindowStyle="None" 
+        WindowState="Normal"
+        AllowsTransparency="True">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid x:Name="Main" Background="#CC2E3851">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <!--key-->
+            <Border Grid.Row="0" Grid.Column="0" Margin="0, 2.5" Background="#CC1E429C">
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Key : "/>
+            </Border>
+            <TextBox x:Name="ValueK" Grid.Row="0" Grid.Column="1" Margin="0, 2.5" />
+            <!--value-->
+            <Border Grid.Row="1" Grid.Column="0" Margin="0, 2.5" Background="#CCFF1852">
+                <TextBlock Text="Value : "/>
+            </Border>
+            <TextBox x:Name="ValueV" Margin="0, 2.5" Grid.Row="1" Grid.Column="1" />
+        </Grid>
+        <!--value type-->
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Background="#FF7E8CF3" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <RadioButton x:Name="StrDig" Grid.Column="0" Content="String | Digit" IsChecked="True"/>
+            <RadioButton x:Name="AddDictionary" Grid.Column="1" Content="{}{ Dictionary }" />
+            <RadioButton x:Name="AddList" Grid.Column="2" Content="[ List ]" />
+        </Grid>
+        <!--送出-->
+        <Button x:Name="Submit" Grid.Row="3" Content="確定" 
+                Background="{x:Null}"
+                Foreground="White" FontSize="30" />
+    </Grid>
+</Window>

@@ -1,0 +1,148 @@
+﻿<Window x:Class="JSONExplorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JSONExplorer"
+        mc:Ignorable="d"
+        DataContext="{Binding Source={StaticResource ViewModel}}"
+        Title="MainWindow"
+        Width="500" MinWidth="250"
+        Height="400" MinHeight="300"
+        ResizeMode="CanResizeWithGrip"
+        Background="{x:Null}"
+        WindowStyle="None" 
+        WindowState="Normal"
+        AllowsTransparency="True">
+
+    <Grid x:Name="Main"  Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!-- 選單 -->
+        <Grid Grid.Row ="1" Background="#CC2E3851" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <!-- 選單 -->
+            <Menu Grid.Column="0" Background="#CC2E3851" >
+                <Menu.Resources>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Background" Value="{x:Null}"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="FontSize" Value="15"/>
+                    </Style>
+                </Menu.Resources>
+                <MenuItem Header="檔案(F)">
+                    <MenuItem.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="FontSize" Value="12"/>
+                        </Style>
+                    </MenuItem.Resources>
+                    <Label x:Name="NewFile">新增(N)</Label>
+                    <Label x:Name="OpenFile">開啟(O)</Label>
+                    <Label x:Name="SaveAsFile">另存新檔</Label>
+                </MenuItem>
+            </Menu>
+            <!-- 其他功能 -->
+            <WrapPanel Grid.Row="0" Grid.Column="1" 
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center">
+                <WrapPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="2.5, 0"/>
+                        <Setter Property="Height" Value="25"/>
+                        <Setter Property="Width" Value="25"/>
+                    </Style>
+
+                </WrapPanel.Resources>
+                <!-- 開啟資料夾 -->
+                <Button x:Name="Btn_folder" ToolTip="開啟資料夾">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Canvas Width="21" Height="21" Background="#CC2E3851">
+                                <Path Name="MouseOver" 
+                                      Width="21" Height="21"    
+                                      Stretch="Fill"
+                                      Data="m20.44335,6.70835c-0.00295,-1.95538 -1.32302,-3.5397 -2.95244,-3.54236l0,-0.00089l-9.04928,0c-0.37284,-1.43643 -1.48471,-2.48673 -2.80921,-2.48939l-2.1226,0c-1.63015,0.00177 -2.95096,1.58698 -2.95392,3.54236l0,12.56474c0.00295,1.95361 1.32376,3.53793 2.95392,3.54147l13.98182,0c1.62794,-0.00354 2.94949,-1.58786 2.95244,-3.54147l0,-10.07446l-0.00074,0zm-16.93352,-4.26234l2.1226,0c0.77226,-0.00354 1.41531,0.73858 1.46404,1.66137l0.04282,0.8298l10.35237,0c0.80696,0.00177 1.47437,0.80234 1.47585,1.77118l0,0.43837c-0.43633,-0.30553 -0.93616,-0.49327 -1.47659,-0.49416l-13.98182,0c-0.54043,0.00089 -1.041,0.18952 -1.47659,0.49504l0,-2.93041c0.00221,-0.96883 0.66963,-1.76941 1.47733,-1.77118zm13.98108,16.10709l-13.98108,0c-0.80696,-0.00177 -1.47437,-0.80411 -1.47733,-1.77118l0,-6.58701l0.00074,0c0.00148,-0.96972 0.66889,-1.77029 1.47659,-1.77206l13.98182,0c0.80696,0.00177 1.46994,0.79792 1.47659,1.76321l0,6.59498c-0.00295,0.96972 -0.67037,1.77029 -1.47733,1.77206z"
+                                      Fill="White"/>
+                            </Canvas>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter TargetName="MouseOver" Property="Fill" Value="#FF88D170" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <!-- 儲存(Save) -->
+                <Button x:Name="Btn_Save" ToolTip="儲存">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Canvas Width="21" Height="21" Background="#CC2E3851">
+                                <Path Name="MouseOver" 
+                                      Width="21" Height="21"    
+                                      Stretch="Fill"
+                                      Data="M322.02,69.34H256h-96H85.34c-8.84,0-16,7.16-16,16V294.7v69.45v62.51c0,8.84,7.16,16,16,16h341.32    c8.84,0,16-7.16,16-16v-62.51V294.7V186.45c0-4.34-1.76-8.49-4.88-11.51L333.14,73.83C330.16,70.95,326.17,69.34,322.02,69.34z     M240,101.34v98.72h-64v-98.72H240z M410.66,348.15H101.34V310.7h309.32V348.15z M101.34,410.66v-30.51h309.32v30.51H101.34z     M410.66,278.7H101.34V101.34H144v114.72c0,8.84,7.16,16,16,16h96c8.84,0,16-7.16,16-16V101.34h43.55l95.11,91.9V278.7z"
+                                      Fill="White"/>
+                            </Canvas>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter TargetName="MouseOver" Property="Fill" Value="#FF88D170" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <!-- 設定(齒輪) -->
+                <Button x:Name="SettingWindowOpenBtn" ToolTip="設定">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Canvas Width="21" Height="21" Background="#CC2E3851">
+                                <Path Name="MouseOver" 
+                                      Width="21" Height="21"       
+                                      Stretch="Fill"
+                                      Data="m11.11038,18.37377c-0.21043,0.02074 -0.42556,0.03509 -0.64683,0.03509l0,0c-0.19792,0 -0.39017,-0.01135 -0.57772,-0.02818l0,0l-1.62389,2.18639l-0.39936,-0.1186c-0.46873,-0.13788 -0.92401,-0.31086 -1.36183,-0.51843l0,0l-0.37955,-0.17989l0.09766,-2.74633c-0.34512,-0.25305 -0.66711,-0.53475 -0.9653,-0.84361l0,0l-2.56748,0.57774l-0.23448,-0.36081c-0.27505,-0.42353 -0.50953,-0.86734 -0.71735,-1.31606l0,0l-0.18046,-0.39193l1.74327,-2.02131c-0.10899,-0.428 -0.18117,-0.86983 -0.21844,-1.32003l0,0l-2.31012,-1.2795l0.04199,-0.43344c0.04955,-0.51844 0.14531,-1.01461 0.25972,-1.49152l0,0l0.10215,-0.42306l2.57668,-0.37362c0.18376,-0.40624 0.40008,-0.79123 0.64376,-1.153l0,0l-0.98321,-2.53579l0.29676,-0.30444c0.34888,-0.35583 0.72231,-0.67855 1.112,-0.9736l0,0l0.33757,-0.255l2.22425,1.46334c0.37485,-0.18087 0.7669,-0.32963 1.17311,-0.4438l0,0l0.80629,-2.6208l0.41565,-0.0331c0.22387,-0.01729 0.46448,-0.03756 0.72608,-0.03756l0,0c0.2609,0 0.5008,0.02027 0.72467,0.03756l0,0l0.41564,0.0331l0.81502,2.648c0.39064,0.11414 0.76926,0.25994 1.13207,0.43688l0,0l2.25539,-1.48414l0.33874,0.25502c0.3897,0.29456 0.76382,0.61826 1.11201,0.97261l0,0l0.29793,0.30444l-1.0134,2.61092c0.2208,0.33605 0.41989,0.6919 0.58998,1.06601l0,0l2.65712,0.38548l0.10332,0.42304c0.11606,0.47644 0.21137,0.97261 0.25971,1.49204l0,0l0.042,0.43342l-2.39081,1.32397c-0.03585,0.41071 -0.09954,0.81498 -0.19461,1.20885l0,0l1.8013,2.0846l-0.18116,0.39337c-0.20711,0.45024 -0.44042,0.89552 -0.71665,1.31757l0,0l-0.23448,0.35977l-2.63117,-0.59056c-0.27883,0.29206 -0.58077,0.56092 -0.90349,0.80358l0,0l0.10025,2.8002l-0.3805,0.18039c-0.4383,0.20658 -0.89287,0.38005 -1.36158,0.51794l0,0l-0.4008,0.11861l-1.62743,-2.19183l0,0l0,0zm2.08814,0.7013c0.14037,-0.04894 0.27836,-0.10184 0.41493,-0.15818l0,0l-0.09388,-2.64451l0.29605,-0.19918c0.44348,-0.30145 0.84733,-0.66323 1.20589,-1.0739l0,0l0.23872,-0.27378l2.48964,0.55844c0.07478,-0.13097 0.14719,-0.2649 0.21701,-0.40178l0,0l-1.70292,-1.9724l0.10568,-0.35239c0.15026,-0.50755 0.23566,-1.05169 0.26089,-1.6195l0,0l0.01557,-0.3697l2.26199,-1.25231c-0.02358,-0.15173 -0.0507,-0.30246 -0.08161,-0.45371l0,0l-2.51676,-0.3647l-0.13539,-0.34102c-0.20241,-0.51004 -0.47015,-0.98744 -0.78979,-1.42778l0,0l-0.21136,-0.29356l0.95726,-2.4666c-0.11087,-0.10183 -0.22458,-0.20066 -0.34134,-0.29653l0,0l-2.13673,1.40505l-0.31469,-0.17399c-0.46612,-0.25699 -0.97024,-0.4522 -1.50195,-0.57871l0,0l-0.34393,-0.08253l-0.77161,-2.50664c-0.07502,-0.00394 -0.14791,-0.00594 -0.21891,-0.00594l0,0c-0.07243,0 -0.14531,0.002 -0.2208,0.00594l0,0l-0.76618,2.49034l-0.34889,0.07809c-0.54091,0.12156 -1.05681,0.31975 -1.53733,0.58019l0,0l-0.31398,0.17099l-2.10206,-1.38279c-0.11606,0.09588 -0.23,0.1947 -0.33992,0.29653l0,0l0.93177,2.40186l-0.2189,0.29404c-0.34134,0.45912 -0.62513,0.96224 -0.83791,1.50241l0,0l-0.13469,0.34249l-2.43586,0.35286c-0.0309,0.15125 -0.05826,0.30198 -0.08114,0.45371l0,0l2.18368,1.20933l0.01344,0.37262c0.02288,0.60148 0.11889,1.17872 0.28401,1.7184l0,0l0.10805,0.35483l-1.64915,1.91113c0.06936,0.13738 0.14154,0.2713 0.21703,0.40227l0,0l2.42169,-0.5461l0.24109,0.27379c0.37153,0.42603 0.79591,0.79618 1.26346,1.1036l0,0l0.30171,0.19716l-0.09224,2.604c0.13682,0.05634 0.27529,0.10923 0.41564,0.15818l0,0l1.53285,-2.06482l0.35006,0.04495c0.2642,0.0351 0.52133,0.05783 0.77728,0.05783l0,0c0.27529,0 0.55293,-0.02519 0.83672,-0.06721l0,0l0.35314,-0.05188l1.54464,2.08112l0,0l0,0zm0.69872,-5.36219l0.33779,0.54361l-2.14145,1.45943l-0.76005,-1.22518l0,0c-0.27648,0.07067 -0.5671,0.11221 -0.86951,0.11221l0,0c-2.09263,0 -3.78824,-1.7767 -3.78824,-3.96655l0,0c0,-2.19181 1.69561,-3.96802 3.78824,-3.96802l0,0c2.09027,0 3.78634,1.77621 3.78634,3.96802l0,0c0,0.89994 -0.28872,1.73368 -0.77278,2.3994l0,0l0.41965,0.67708m-1.44062,0.20903l0.06676,-0.04446l-0.61049,-0.98397l0.35384,-0.37067c0.4626,-0.48581 0.74638,-1.14854 0.74638,-1.88641l0,0c-0.0026,-1.47521 -1.14291,-2.66974 -2.54955,-2.67269l0,0c-1.40995,0.00295 -2.54908,1.19599 -2.55144,2.67269l0,0c0.00236,1.47374 1.14267,2.66824 2.55144,2.67122l0,0c0.31467,0 0.61757,-0.06771 0.91079,-0.18533l0,0l0.46754,-0.1878l0.61474,0.98742l0,0z"
+                                      Fill="White"/>
+                            </Canvas>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Button.IsMouseOver" Value="True">
+                                    <Setter TargetName="MouseOver" Property="Fill" Value="Yellow" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </WrapPanel>
+        </Grid>
+        <!-- 導覽 Navbar -->
+        <ScrollViewer x:Name="NavbarScroll"  Grid.Row="2"
+                      Background="#7F094173"
+                      Content="{Binding JsonView}"/>
+        <!-- View -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!-- Key View -->
+            <ScrollViewer x:Name="ScrollKeys" Grid.Column="0"
+                          Background="#CC345099"
+                          VerticalScrollBarVisibility="Hidden"
+                          Content="{Binding KeyView}"/>
+
+            <!-- Value View -->
+            <ScrollViewer x:Name="Values" Grid.Column="1"
+                          Background="White"
+                          VerticalScrollBarVisibility="Disabled"
+                          HorizontalScrollBarVisibility="Disabled"
+                          Content="{Binding ValueView}"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="JSONExplorer.Views.Controls.JsonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JSONExplorer.Views.Controls"
+             mc:Ignorable="d" 
+             DataContext="{Binding Source={StaticResource ViewModel}}"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="MenuItem">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0, 0, 20, 0"/>
+            <Setter Property="Background" Value="#FF1A2871"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Menu x:Name="Navbar" Background="{x:Null}" VerticalAlignment="Center" ItemsSource="{Binding Items}"/>
+    
+</UserControl>
