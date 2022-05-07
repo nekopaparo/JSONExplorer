@@ -28,7 +28,7 @@ namespace JSONExplorer.Views.Windows
             // <視窗控制>
             WindowControl windowControl = new WindowControl(this);
             this.SourceInitialized += new System.EventHandler(windowControl.Window_SourceInitialized); // 右下角拖曳?
-            MyWindowState myWindowState = new MyWindowState(windowControl, "設定");
+            MyWindowState myWindowState = new MyWindowState(windowControl, "新增");
             Main.Children.Add(myWindowState);
             Main.MouseLeftButtonDown += (sender, e) =>
             {
